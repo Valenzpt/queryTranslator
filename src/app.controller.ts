@@ -7,7 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post()
-  getHello(@Body() payload: PayloadDto): string {
-    return payload.prompt;
+  async translate(@Body() payload: PayloadDto): Promise<string> {
+    return await this.appService.translateFromGpt(payload.prompt);
   }
 }
