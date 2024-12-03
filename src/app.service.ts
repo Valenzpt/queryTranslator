@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { OpenaiService } from './openai/openai.service';
 
 @Injectable()
@@ -7,6 +7,7 @@ export class AppService {
 
   }
   async translateFromGpt(prompt: string): Promise<string> {
+    Logger.log('Translating')
     return await this.openAiService.chatGptRequest(prompt);
   }
 }
